@@ -22,6 +22,8 @@ url = "bolt://localhost:7687"
 driver = GraphDatabase.driver(url, auth=(DB_USER, DB_PASSWORD))
 
 
+
+
 # Функция для выполнения запроса к VK API
 def vk_api_request(method, params):
     params['access_token'] = VK_ACCESS_TOKEN
@@ -129,7 +131,7 @@ def create_relationship(tx, user_id, target_id, relationship_type):
     logger.info(f"Связь:  {user_id} - [ {relationship_type} ] - {target_id}")
 
 
-def process_user(user_id, level, max_depth, max_users=100):
+def process_user(user_id, level, max_depth, max_users=200):
     queue = [(user_id, level)]
     visited = set()
     processed_count = 0
